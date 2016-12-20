@@ -486,9 +486,14 @@ angular.module('portainer', [
     Authentication.init();
     $rootScope.$state = $state;
 
+    console.log('Browser date (using Date(), local TZ):');
+    console.log(JSON.stringify(new Date(), null, 4));
+
     $rootScope.$on('tokenHasExpired', function($state) {
-      log('Token has expired. Exp date:');
+      console.log('Token has expired. Exp date:');
       console.log(JSON.stringify(Authentication.getTokenExpirationDate(), null, 4));
+      console.log('Comparison against browser date:');
+      console.log(JSON.stringify(new Date(), null, 4));
       $state.go('auth', {error: 'Your session has expired'});
     });
 
