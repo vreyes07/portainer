@@ -279,7 +279,7 @@ angular.module('portainer.services', ['ngResource', 'ngSanitize'])
         init: function() {
           var jwt = localStorageService.get('JWT');
           if (jwt) {
-            console.log('Token is here. Exp date: ');
+            console.log('Authentication init. Exp date: ');
             console.log(JSON.stringify(jwtHelper.getTokenExpirationDate(jwt), null, 4));
             var tokenPayload = jwtHelper.decodeToken(jwt);
             $rootScope.username = tokenPayload.username;
