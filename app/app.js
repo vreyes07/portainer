@@ -487,6 +487,8 @@ angular.module('portainer', [
     $rootScope.$state = $state;
 
     $rootScope.$on('tokenHasExpired', function($state) {
+      log('Token has expired. Exp date:');
+      console.log(JSON.stringify(Authentication.getTokenExpirationDate(), null, 4));
       $state.go('auth', {error: 'Your session has expired'});
     });
 
